@@ -4,7 +4,7 @@ import bot_slack_meli
 
 
 def main() ->None:
-
+    
     continuar_ejecutando = False
     while not continuar_ejecutando:
         feriados_de_hoy = list()
@@ -16,7 +16,7 @@ def main() ->None:
 
         fechas_feriados.validando_feriados(feriados_de_hoy, fecha_actual, dias_feriados_a_validar)
         bot_slack_meli.enviar_mensajes_feriados(feriados_de_hoy)
-        time.sleep(3600)#falta ver cada cuantos segundos se enviara el mensaje.
+        time.sleep(43200)
 
 
 main()
