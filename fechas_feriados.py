@@ -17,23 +17,27 @@ def obtener_fechas_feriados() ->list:
     #PRE:No recibimos ningun argumento.
     #POST:Retornamos la lista con los feriados de todos los paises.
 
-    try:
-        obtener_informacion = requests.get("https://internal-api.mercadolibre.com//shipping/holidays/dump/all")
-        conversion_a_diccionario = obtener_informacion.json()
-        dias_feriados  = conversion_a_diccionario['values']
+    cantidad_intentos =  0
+    while cantidad_intentos < 2:
 
-    except Exception:
-        dias_feriados = list()
+        try:
+            obtener_informacion = requests.get("https://internal-api.mercadolibre.com/shipping/holidays/dump/all")
+            conversion_a_diccionario = obtener_informacion.json()
+            dias_feriados  = conversion_a_diccionario['values']
+            cantidad_intentos = 2
+        except Exception:
+            dias_feriados = list()
+            cantidad_intentos+=1
 
     return dias_feriados
 
 
-def obtener_fecha_actual_paises() ->str:
+def obtener_fecha_actual() ->str:
 
     #PRE:No recibimos ningun argumento.
-    #POST:Retornamos como str la fecha actual de todos los paises.
+    #POST:Retornamos como str la fecha actual.
 
-    informacion_fecha = datetime.now()
-    obtener_fecha_actual_paises = str(informacion_fecha.date())
+    fecha_actual = datetime.now()
+    fecha_actual_string = str(fecha_actual.date())
     
-    return obtener_fecha_actual_paises
+    return fecha_actual_string
