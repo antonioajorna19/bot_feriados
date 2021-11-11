@@ -29,7 +29,7 @@ def enviar_mensajes_feriados(lista_feriados:list, fecha_actual:str) ->None:
 
     if len(feriados_no_enviados) == 0 and len(lista_feriados) != 0:
         mensaje_enviado = True
-        estado_ejecucion = f"{fecha_actual} ---- Mensaje enviado con exito."
+        estado_ejecucion = f"{fecha_actual} ---- Mensajes de feriado enviados con exito."
     
     elif len(feriados_no_enviados) != 0 and len(lista_feriados) != 0:
         mensaje_enviado = True
@@ -43,7 +43,7 @@ def enviar_mensajes_feriados(lista_feriados:list, fecha_actual:str) ->None:
             try:
                 client.chat_postMessage(channel='#prueba_bot_jose', text= "HOY NO HAY FERIADO EN NINGUN SITE.")
                 contador_intentos = 2
-                estado_ejecucion = f"{fecha_actual}  --- Mensaje enviado con exito."
+                estado_ejecucion = f"{fecha_actual}  --- Mensaje de dia no feriado enviado con exito."
             except Exception:
                 contador_intentos+=1
                 estado_ejecucion = f"{fecha_actual}  --- Mensaje fallido, no se ha podido enviar el mensaje de dia no feriado."
