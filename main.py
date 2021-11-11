@@ -24,9 +24,8 @@ def main() ->None:
             estado_ejecucion = f"{fecha_actual} ---- Fallido, no se pudo obtener la informacion de la api."
         else:
             fechas_feriados.validando_feriados(feriados_de_hoy, fecha_actual, dias_feriados_api)
-            bot_slack_meli.enviar_mensajes_feriados(feriados_de_hoy)
-            estado_ejecucion = f"{fecha_actual} --- Exitoso, se ha enviado la notificacion."
-        
+            estado_ejecucion = bot_slack_meli.enviar_mensajes_feriados(feriados_de_hoy,fecha_actual)
+
         escribir_log(estado_ejecucion)
         time.sleep(43200)
 
