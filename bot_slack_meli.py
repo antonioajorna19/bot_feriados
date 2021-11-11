@@ -46,7 +46,7 @@ def enviar_mensajes_feriados(lista_feriados:list, fecha_actual:str) ->None:
                 estado_ejecucion = f"{fecha_actual}  --- Mensaje enviado con exito."
             except Exception:
                 contador_intentos+=1
-                estado_ejecucion = f"{fecha_actual}  --- Mensaje fallido, no se ha podido enviar el mensaje."
+                estado_ejecucion = f"{fecha_actual}  --- Mensaje fallido, no se ha podido enviar el mensaje de dia no feriado."
     
     return estado_ejecucion
       
